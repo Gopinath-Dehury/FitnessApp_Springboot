@@ -1,4 +1,4 @@
-package com.gms;
+package com.fitnessApp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
