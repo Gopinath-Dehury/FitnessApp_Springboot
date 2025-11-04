@@ -13,7 +13,6 @@
 //
 //}
 
-
 package com.fitnessApp;
 
 import org.springframework.boot.SpringApplication;
@@ -34,5 +33,7 @@ public class FitnessAppApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(FitnessAppApplication.class, args);
         System.out.println("Its Running perfectly");
+        System.out.println("Its Running perfectly");
+
     }
 }
