@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background: url('https://img.freepik.com/free-photo/woman-helping-man-gym_23-2149314079.jpg?t=st=1724830000~exp=1724833600~hmac=6a6c38ee520ec62fa99f1b5ab1d5fa19b4c0e5e27f540f5f2786dd2b1f38d7e4&w=996') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Inter', sans-serif;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6); /* dark transparent overlay */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* Added to stack nav and content */
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9); /* semi-transparent white */
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #0d6efd;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        /* Add padding to the body so content doesn't get hidden under the navbar */
+        body {
+            padding-top: 56px; /* Adjust this value to match the navbar's height */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+            <i class="fa-solid fa-dumbbell me-2"></i> FitnessApp
+        </a>
+    </div>
+</nav>
+
+<div class="overlay">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-lg p-4">
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-user-plus fa-3x text-success mb-3"></i>
+                            <h2 class="card-title fw-bold">Create a New Account</h2>
+                            <p class="card-text text-muted">Join FitnessApp to start your journey!</p>
+                        </div>
+                        
+                        <!--
+                            The form binds to the "user" object passed from the controller.
+                            The "th:action" attribute specifies the URL to submit the form data.
+                        -->
+                        <form th:action="@{registerUsers}" th:object="${user}" method="post">
+                            <div th:if="${msg}" th:text="${msg}" class="alert alert-info" role="alert"></div>
+
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" 
+                                       class="form-control rounded-3" 
+                                       id="username" 
+                                       th:field="*{username}" 
+                                       placeholder="Choose a username" 
+                                       required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" 
+                                       class="form-control rounded-3" 
+                                       id="firstName" 
+                                       th:field="*{firstName}" 
+                                       placeholder="Enter your first name" 
+                                       required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" 
+                                       class="form-control rounded-3" 
+                                       id="lastName" 
+                                       th:field="*{lastName}" 
+                                       placeholder="Enter your last name" 
+                                       required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" 
+                                       class="form-control rounded-3" 
+                                       id="email" 
+                                       th:field="*{mailid}" 
+                                       placeholder="Enter your email" 
+                                       required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" 
+                                       class="form-control rounded-3" 
+                                       id="age" 
+                                       th:field="*{age}" 
+                                       placeholder="Enter your age" 
+                                       required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" 
+                                       class="form-control rounded-3" 
+                                       id="password" 
+                                       th:field="*{password}" 
+                                       placeholder="Create a password" 
+                                       required>
+                            </div>
+
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-success btn-lg rounded-pill">Register</button>
+								<a th:href="@{loginform}"  class="btn btn-outline-secondary btn-sm rounded-pill mt-2"> Already have an account? Login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
